@@ -1,3 +1,4 @@
+# Other configs
 Autodesk/*
 alacritty/*
 coc/*
@@ -12,4 +13,20 @@ kitty/*
 linearmouse/*
 stripe/*
 
+# Stuff
 .DS_Store
+
+# AstroNvim stuff
+nvim/.git/*
+nvim/.github/*
+nvim/lua/astronvim/*
+nvim/lua/plugins/*
+nvim/lua/lazy_snapshot.lua
+nvim/.gitignore
+nvim/.luacheckrc
+nvim/.stylua.toml
+nvim/styluaignore
+nvim/typos.toml
+nvim/LICENSE
+nvim/config.ld
+nvim/init.lua
