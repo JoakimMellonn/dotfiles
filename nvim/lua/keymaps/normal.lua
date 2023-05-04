@@ -4,7 +4,7 @@ local telescope = require('telescope.builtin')
 -- Leader mappings
 wk.register({
     -- Neovim
-    q = { "<cmd>q<CR>", "Quit NeoVim" },
+    q = { "<cmd>wq<CR>", "Quit NeoVim" },
 
     -- NeoTree
     e = { "<cmd>NeoTreeFocusToggle<CR>", "Toggle Explorer" },
