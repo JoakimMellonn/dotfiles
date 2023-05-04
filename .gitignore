@@ -12,7 +12,6 @@ karabiner/*
 kitty/*
 linearmouse/*
 stripe/*
-nvim
 
 # Stuff
 .DS_Store
