@@ -6,12 +6,30 @@ return {
             icons = { group = vim.g.icons_enabled and "" or "+", separator = "" },
             disable = { filetypes = { "TelescopePrompt" } },
         },
-        config = require "plugins.configs.which-key",
+        config = require('plugins.configs.which-key'),
     },
     {
         "NvChad/nvim-colorizer.lua",
-        cmd = { "ColorizerToggle", "ColorizerAttachToBuffer", "ColorizerDetachFromBuffer", "ColorizerReloadAllBuffers" },
-        opts = { user_default_options = { names = false } },
+        event = "BufReadPre",
+        opts = {
+            filetypes = { "*", "!lazy" },
+            buftype = { "*", "!prompt", "!nofile" },
+            user_default_options = {
+                RGB = true, -- #RGB hex codes
+                RRGGBB = true, -- #RRGGBB hex codes
+                names = false, -- "Name" codes like Blue
+                RRGGBBAA = true, -- #RRGGBBAA hex codes
+                AARRGGBB = false, -- 0xAARRGGBB hex codes
+                rgb_fn = true, -- CSS rgb() and rgba() functions
+                hsl_fn = true, -- CSS hsl() and hsla() functions
+                css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+                css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+                -- Available modes: foreground, background
+                -- Available modes for `mode`: foreground, background,  virtualtext
+                mode = "background", -- Set the display mode.
+                virtualtext = "■",
+            },
+        },
     },
     {
         "lukas-reineke/indent-blankline.nvim",
@@ -64,4 +82,38 @@ return {
             },
         },
     },
+    {
+        "petertriho/nvim-scrollbar",
+        event = "BufReadPost",
+        config = function()
+            local scrollbar = require("scrollbar")
+            scrollbar.setup({})
+        end,
+    },
+    {
+        'mrjones2014/smart-splits.nvim',
+        config = function()
+            require('smart-splits').setup({})
+        end,
+    },
+    {
+        "mrjones2014/legendary.nvim",
+        config = function()
+            require('legendary').setup({
+                extensions = {
+                  smart_splits = {
+                    directions = { 'h', 'j', 'k', 'l' },
+                    mods = {
+                      -- for moving cursor between windows
+                      move = '<C>',
+                      -- for resizing windows
+                      resize = '<M>',
+                      -- for swapping window buffers
+                      swap = false, -- false disables creating a binding
+                    },
+                  },
+                },
+              })
+        end,
+    }
 }

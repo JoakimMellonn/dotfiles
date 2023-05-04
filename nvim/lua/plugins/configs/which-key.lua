@@ -1,5 +1,5 @@
-return function(_, opts)
+return function()
     vim.o.timeout = true
     vim.o.timeoutlen = 300
-    require("which-key").setup(opts)
+    require("which-key").setup({})
 end

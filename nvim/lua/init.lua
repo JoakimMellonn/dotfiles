@@ -5,7 +5,7 @@ vim.g.loaded_netrwPlugin = 1
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
-require('keymaps.before_plugins')
+vim.g.mapleader = " "
 require('lazy_setup')
 require('opts')
 require('keymaps')
