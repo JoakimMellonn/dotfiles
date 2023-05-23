@@ -1,7 +1,12 @@
+-- Basic/other stuff
 vim.cmd[[colorscheme dracula]]
+vim.opt.clipboard = 'unnamed'
 
 -- Tab stuff and indents
-vim.cmd [[highlight IndentBlanklineIndent guifg=#44475a gui=nocombine]]
+vim.opt.termguicolors = true
+vim.opt.list = false
+vim.cmd([[highlight IndentBlanklineIndent guifg=#44475a gui=nocombine]])
+vim.cmd([[highlight IndentBlanklineContextChar guifg=#ff79c6 gui=nocombine]])
 
 vim.opt.list = true
 vim.opt.expandtab = true

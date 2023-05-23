@@ -77,6 +77,7 @@ return {
             char = "▏",
             context_char = "▏",
             show_current_context = true,
+            show_current_context_start = true,
             char_highlight_list = {
                 "IndentBlanklineIndent",
             },
@@ -115,5 +116,61 @@ return {
                 },
               })
         end,
-    }
+    },
+    {
+        'akinsho/bufferline.nvim',
+        dependencies = {
+            'nvim-tree/nvim-web-devicons',
+        },
+        config = function()
+            require("bufferline").setup{
+                options = {
+                    mode = 'buffers',
+                    diagnostics = "nvim_lsp",
+                    offsets = {
+                        {
+                            filetype = "neo-tree",
+                            text = "File Explorer",
+                            text_align = "left",
+                            separator = false,
+                        }
+                    },
+                    hover = {
+                        enabled = true,
+                        delay = 200,
+                        reveal = {'close'}
+                    },
+                }
+            }
+        end,
+    },
+    {
+        "goolord/alpha-nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+        lazy = false,
+        config = function ()
+            require("plugins.configs.alpha")
+        end
+    },
+    {
+        "nvim-lualine/lualine.nvim",
+        lazy = false,
+        config = function ()
+            require("plugins.configs.lualine-conf")
+        end
+    },
+    {
+        "rcarriga/nvim-notify",
+        lazy = false,
+        config = function ()
+            require("plugins.configs.nvim-notify")
+        end
+    },
+    {
+        'stevearc/dressing.nvim',
+        opts = {},
+        config = function ()
+            require("plugins.configs.nvim-dressing")
+        end
+    },
 }
