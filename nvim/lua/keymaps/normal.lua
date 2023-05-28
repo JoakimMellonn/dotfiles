@@ -1,11 +1,13 @@
 local utils = require("keymaps.utils")
 local wk = require("which-key")
 local telescope = require('telescope.builtin')
+local sessions = require("session_manager")
 
 -- Leader mappings
 wk.register({
     -- Neovim
     q = { "<cmd>confirm q<cr>", "Quit NeoVim" },
+    w = { "<cmd>w<cr>", "Write to file" },
 
     -- NeoTree
     e = { "<cmd>NeoTreeFocusToggle<CR>", "Toggle Explorer" },
@@ -34,6 +36,22 @@ wk.register({
     n = {
         name = "Notify",
         h = { function () require("notify").history() end, "Notify history" },
+    },
+
+    s = {
+        name = "Sessions",
+        f = { sessions.load_session, "Load session" },
+        l = { sessions.load_last_session, "Last session" },
+        s = { sessions.save_current_session, "Save session" },
+    },
+
+    F = {
+        name = "Flutter",
+        r = { "<cmd>FlutterRun<CR>", "Flutter Run" },
+        q = { "<cmd>FlutterQuit<CR>", "Flutter Quit" },
+        e = { "<cmd>FlutterEmulators<CR>", "Flutter Emulators" },
+        R = { "<cmd>FlutterReload<CR>", "Flutter Reload" },
+        d = { "<cmd>FlutterDevices<CR>", "Flutter Devices" },
     },
 
 }, { prefix = "<leader>" })

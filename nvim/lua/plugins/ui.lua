@@ -71,6 +71,7 @@ return {
                 "catch_clause",
                 "import_statement",
                 "operation_type",
+                "[",
             },
             show_trailing_blankline_indent = false,
             use_treesitter = true,
@@ -125,20 +126,23 @@ return {
         config = function()
             require("bufferline").setup{
                 options = {
-                    mode = 'buffers',
                     diagnostics = "nvim_lsp",
+                    separator_style = { "", "" },
+                    indicator = {
+                        style = 'underline',
+                    },
                     offsets = {
                         {
                             filetype = "neo-tree",
-                            text = "File Explorer",
-                            text_align = "left",
-                            separator = false,
-                        }
+                            text = "EXPLORER",
+                            text_align = "center",
+                            -- separator = true,
+                        },
                     },
                     hover = {
                         enabled = true,
-                        delay = 200,
-                        reveal = {'close'}
+                        delay = 0,
+                        reveal = { "close" },
                     },
                 }
             }
@@ -168,9 +172,122 @@ return {
     },
     {
         'stevearc/dressing.nvim',
-        opts = {},
-        config = function ()
-            require("plugins.configs.nvim-dressing")
-        end
+        lazy = true,
+        opts = {
+            input = {
+                border = { "▄", "▄", "▄", "█", "▀", "▀", "▀", "█" }, -- [ top top top - right - bottom bottom bottom - left ]
+                win_options = { winblend = 0 },
+            },
+            -- select = { telescope = require("tvl.util").telescope_theme("dropdown") },
+        },
+        init = function()
+            ---@diagnostic disable-next-line: duplicate-set-field
+            vim.ui.select = function(...)
+                require("lazy").load({ plugins = { "dressing.nvim" } })
+                return vim.ui.select(...)
+            end
+            ---@diagnostic disable-next-line: duplicate-set-field
+            vim.ui.input = function(...)
+                require("lazy").load({ plugins = { "dressing.nvim" } })
+                return vim.ui.input(...)
+            end
+        end,
+    },
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+            override = {
+                ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                ["vim.lsp.util.stylize_markdown"] = true,
+                ["cmp.entry.get_documentation"] = true,
+            },
+            cmdline = {
+                view = "cmdline",
+                format = {
+                    cmdline = { icon = "  " },
+                    search_down = { icon = "  󰄼" },
+                    search_up = { icon = "  " },
+                    lua = {icon = " "}
+                },
+            },
+            lsp = {
+                progress = { enabled = true },
+                hover = { enabled = false },
+                signature = { enabled = false },
+            },
+            routes = {
+                {
+                    filter = {
+                        event = "msg_show",
+                        kind = "",
+                        find = "written",
+                    },
+                    opts = { skip = true },
+                },
+            },
+        },
+    },
+    {
+        "anuvyklack/windows.nvim",
+        event = "WinNew",
+        dependencies = {
+            { "anuvyklack/middleclass" },
+            { "anuvyklack/animation.nvim", enabled = true },
+        },
+        opts = {
+            animation = { enable = true, duration = 150, fps = 60 },
+            autowidth = { enable = true },
+        },
+        keys = { { "<leader>m", "<cmd>WindowsMaximize<CR>", desc = "Zoom window" } },
+        init = function()
+            vim.o.winwidth = 30
+            vim.o.winminwidth = 30
+            vim.o.equalalways = true
+        end,
+    },
+    {
+        "utilyre/barbecue.nvim",
+        event = { "BufReadPost" },
+        dependencies = {
+            "SmiteshP/nvim-navic",
+            "nvim-tree/nvim-web-devicons",
+        },
+        opts = {
+            theme = "auto",
+            include_buftypes = { "" },
+            exclude_filetypes = { "gitcommit", "Trouble", "toggleterm" },
+            show_modified = false,
+            kinds = {
+                File = "", -- File
+                Module = "", -- Module
+                Namespace = "", -- Namespace
+                Package = "", -- Package
+                Class = "", -- Class
+                Method = "", -- Method
+                Property = "", -- Property
+                Field = "", -- Field
+                Constructor = "", -- Constructor
+                Enum = "", -- Enum
+                Interface = "", -- Interface
+                Function = "", -- Function
+                Variable = "", -- Variable
+                Constant = "", -- Constant
+                String = "", -- String
+                Number = "", -- Number
+                Boolean = "◩", -- Boolean
+                Array = "", -- Array
+                Object = "", -- Object
+                Key = "", -- Key
+                Null = "ﳠ", -- Null
+                EnumMember = "", -- EnumMember
+                Struct = "", -- Struct
+                Event = "", -- Event
+                Operator = "", -- Operator
+                TypeParameter = "", -- TypeParameter
+                Macro = "", -- Macro
+            },
+        },
     },
 }

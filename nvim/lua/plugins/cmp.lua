@@ -123,5 +123,11 @@ return {
                 -- Configuration here, or leave empty to use defaults
             })
         end
-    }
+    },
+    {
+        'jose-elias-alvarez/null-ls.nvim',
+        config = function ()
+            require('plugins.configs.null_ls')
+        end
+    },
 }

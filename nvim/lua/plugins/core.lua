@@ -11,5 +11,11 @@ return {
         config = function()
             require('Comment').setup()
         end
+    },
+    {
+        "shatur/neovim-session-manager",
+        config = function ()
+            require("plugins.configs.session")
+        end
     }
 }
