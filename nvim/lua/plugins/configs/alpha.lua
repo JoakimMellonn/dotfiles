@@ -31,10 +31,10 @@ dashboard.section.header.val = {
 
 dashboard.section.buttons.val = {
 	dashboard.button("SPC s l", "  Last session"),
+	dashboard.button("SPC s f", "  Search sessions"),
 	dashboard.button("SPC f f", "󰈞  Find file"),
 	dashboard.button("SPC f g", "  Live grep"),
 	dashboard.button("SPC f r", "  Resume Telescope"),
-	dashboard.button("SPC f c", "  Fuzzy in buffer"),
 	dashboard.button("SPC f b", "  Open buffers"),
 }
 
