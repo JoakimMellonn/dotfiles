@@ -125,12 +125,16 @@ return {
         },
         config = function()
             require("bufferline").setup{
+                highlights = {
+                    buffer_selected = {
+                        bold = true,
+                        italic = false,
+                    },
+                },
                 options = {
                     diagnostics = "nvim_lsp",
                     indicator_icon = "▎",
-                    indicator = {
-                        style = 'underline',
-                    },
+                    tab_size = 23,
                     offsets = {
                         {
                             filetype = "neo-tree",
@@ -139,6 +143,7 @@ return {
                             -- separator = true,
                         },
                     },
+                    separator_style = "slant",
                     hover = {
                         enabled = true,
                         delay = 0,

@@ -1,4 +1,3 @@
-local utils = require("keymaps.utils")
 local wk = require("which-key")
 local telescope = require('telescope.builtin')
 local sessions = require("session_manager")
