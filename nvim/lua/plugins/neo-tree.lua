@@ -20,7 +20,7 @@ return {
         require("neo-tree").setup({
             close_if_last_window = true,
             window = {
-                width = 30,
+                width = 40,
                 mappings = {
                     ['e'] = function() vim.api.nvim_exec('Neotree focus filesystem left', true) end,
                     ['b'] = function() vim.api.nvim_exec('Neotree focus buffers left', true) end,
@@ -29,9 +29,6 @@ return {
                     ["[b"] = "prev_source",
                     ["]b"] = "next_source",
                     o = "open",
-                    O = "system_open",
-                    h = "parent_or_close",
-                    l = "child_or_open",
                 },
             },
         })

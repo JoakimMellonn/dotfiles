@@ -1,1 +1,1 @@
-require('keymaps.normal')
+require("keymaps.normal")

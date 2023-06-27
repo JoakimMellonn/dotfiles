@@ -3,11 +3,69 @@ local wk = require("which-key")
 local telescope = require('telescope.builtin')
 local sessions = require("session_manager")
 
+local function map(mode, lhs, rhs, opts)
+    local keys = require("lazy.core.handler").handlers.keys
+    ---@cast keys LazyKeysHandler
+    -- do not create the keymap if a lazy keys handler exists
+    if not keys.active[keys.parse({ lhs, mode = mode }).id] then
+        opts = opts or {}
+        opts.silent = opts.silent ~= false
+        if opts.remap and not vim.g.vscode then
+            opts.remap = nil
+        end
+        vim.keymap.set(mode, lhs, rhs, opts)
+    end
+end
+
+local function has(plugin)
+    return require("lazy.core.config").plugins[plugin] ~= nil
+end
+
+-- save file
+map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+
+-- Best maps ever
+map("n", "<C-d>", "<C-d>zz")
+map("n","<C-u>", "<C-u>zz")
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
+
+-- Move to window using the <ctrl> hjkl keys
+map("n", "<C-h>", require('smart-splits').move_cursor_left, { desc = "Go to left window", remap = true })
+map("n", "<C-l>", require('smart-splits').move_cursor_right, { desc = "Go to lower window", remap = true })
+map("n", "<C-j>", require('smart-splits').move_cursor_down, { desc = "Go to upper window", remap = true })
+map("n", "<C-k>", require('smart-splits').move_cursor_up, { desc = "Go to right window", remap = true })
+
+-- Move Lines
+map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
+map("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
+map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
+map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
+map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
+
+-- buffers
+if has("bufferline.nvim") then
+    map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
+    map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
+    map("n", "[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
+    map("n", "]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
+else
+    map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+    map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+    map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+    map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
+end
+map("n", "<leader>cc", "<cmd>bprevious<cr><cmd>bd #<cr>", { desc = "Close buffer" })
+
+
+-- WhichKey mappings
+
 -- Leader mappings
 wk.register({
     -- Neovim
-    q = { "<cmd>confirm q<cr>", "Quit NeoVim" },
-    w = { "<cmd>w<cr>", "Write to file" },
+    q = { "<cmd>confirm qa<cr>", "Quit NeoVim" },
+    w = { "<cmd>w<cr><esc>", "Write to file" },
 
     -- NeoTree
     e = { "<cmd>NeoTreeFocusToggle<CR>", "Toggle Explorer" },
@@ -55,27 +113,4 @@ wk.register({
     },
 
 }, { prefix = "<leader>" })
-
--- Normal mappings
-wk.register({
-    -- Navigation and Buffers
-    ["<C-h>"] = { require('smart-splits').move_cursor_left, "Move to left split" },
-    ["<C-l>"] = { require('smart-splits').move_cursor_right, "Move to right split" },
-    ["<C-j>"] = { require('smart-splits').move_cursor_down, "Move to below split" },
-    ["<C-k>"] = { require('smart-splits').move_cursor_up, "Move to above split" },
-    ["<C-Up>"] = { require("smart-splits").resize_up(), "Resize split up" },
-    ["<C-Down>"] = { require("smart-splits").resize_down(), "Resize split down" },
-    ["<C-Left>"] = { require("smart-splits").resize_left(), "Resize split left" },
-    ["<C-Right>"] = { require("smart-splits").resize_right(), "Resize split right" },
-
-    ["<leader>c"] = { utils.close(), "Close tab"},
-    ["L"] = { utils.nav(vim.v.count > 0 and vim.v.count or 1), "Move to next buffer" },
-    ["H"] = { utils.nav(-(vim.v.count > 0 and vim.v.count or 1)), "Move to previous buffer"},
-
-    -- Best mappings ever
-    ["<C-d>"] = { "<C-d>zz" },
-    ["<C-u>"] = { "<C-u>zz" },
-    ["n"] = { "nzzzv" },
-    ["N"] = { "Nzzzv" },
-}, { mode = "n" })
 

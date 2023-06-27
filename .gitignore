@@ -12,6 +12,8 @@ karabiner/*
 kitty/*
 linearmouse/*
 stripe/*
+raycast/*
+op/*
 
 # Stuff
 .DS_Store

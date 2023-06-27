@@ -36,4 +36,5 @@ vim.api.nvim_create_autocmd("Filetype", {
 
 -- Scrolling and line numbers
 vim.opt.scrolloff = 8
-vim.wo.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = true

@@ -25,6 +25,7 @@ end
 ---@param bufnr? number The buffer to close or the current buffer if not provided
 ---@param force? boolean Whether or not to foce close the buffers or confirm changes (default: false)
 function M.close(bufnr, force)
+    print("Close")
     if force == nil then force = false end
     if M.is_available "bufdelete.nvim" then
         require("bufdelete").bufdelete(bufnr, force)
