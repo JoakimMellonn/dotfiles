@@ -2,6 +2,9 @@ local wk = require("which-key")
 local telescope = require('telescope.builtin')
 local sessions = require("session_manager")
 
+vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+
 local function map(mode, lhs, rhs, opts)
     local keys = require("lazy.core.handler").handlers.keys
     ---@cast keys LazyKeysHandler
@@ -36,12 +39,13 @@ map("n", "<C-j>", require('smart-splits').move_cursor_down, { desc = "Go to uppe
 map("n", "<C-k>", require('smart-splits').move_cursor_up, { desc = "Go to right window", remap = true })
 
 -- Move Lines
-map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
-map("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
-map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
-map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
-map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
-map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
+-- TODO: need to figure out modifier keys...
+-- map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
+-- map("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+-- map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
+-- map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
+-- map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
+-- map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 -- buffers
 if has("bufferline.nvim") then
