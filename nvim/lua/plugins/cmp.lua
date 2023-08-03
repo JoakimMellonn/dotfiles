@@ -138,4 +138,7 @@ return {
             require('plugins.configs.null_ls')
         end
     },
+    {
+        "github/copilot.vim",
+    },
 }

@@ -1,4 +1,5 @@
-require("lsp.servers")
+-- require("lsp.servers")
+require("lsp.lazy_lsp")
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions

@@ -1,5 +1,3 @@
-local lspconfig = require("lspconfig")
-
-lspconfig.cssls.setup {
+return {
     filetypes = {"css", "scss", "less"},
 }

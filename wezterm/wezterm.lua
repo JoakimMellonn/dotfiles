@@ -1,5 +1,9 @@
 local wezterm = require 'wezterm'
 
+wezterm.on('gui-startup', function(cmd)
+    wezterm.log_info "Hello!"
+end)
+
 return {
     initial_cols = 130,
     initial_rows = 35,

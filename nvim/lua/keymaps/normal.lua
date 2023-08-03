@@ -1,6 +1,7 @@
 local wk = require("which-key")
 local telescope = require('telescope.builtin')
 local sessions = require("session_manager")
+local utils = require("keymaps.utils")
 
 vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
 vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
@@ -24,13 +25,18 @@ local function has(plugin)
 end
 
 -- save file
-map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr>", { desc = "Save file" })
 
 -- Best maps ever
 map("n", "<C-d>", "<C-d>zz")
 map("n","<C-u>", "<C-u>zz")
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
+map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+
+-- better indenting
+map("v", "<", "<gv")
+map("v", ">", ">gv")
 
 -- Move to window using the <ctrl> hjkl keys
 map("n", "<C-h>", require('smart-splits').move_cursor_left, { desc = "Go to left window", remap = true })
@@ -59,8 +65,11 @@ else
     map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
     map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
 end
-map("n", "<leader>cc", "<cmd>bprevious<cr><cmd>bd #<cr>", { desc = "Close buffer" })
+map("n", "<C-w>", "<cmd>bprevious<cr><cmd>bd #<cr>", { desc = "Close buffer" })
 
+-- LSP
+map("n", "<C-m>", function() utils.diagnostic_goto(true) end, { desc = "Next diagnostic" })
+map("n", "<C-n>", function() utils.diagnostic_goto(false) end, { desc = "Previous diagnostic" })
 
 -- WhichKey mappings
 
@@ -68,7 +77,6 @@ map("n", "<leader>cc", "<cmd>bprevious<cr><cmd>bd #<cr>", { desc = "Close buffer
 wk.register({
     -- Neovim
     q = { "<cmd>confirm qa<cr>", "Quit NeoVim" },
-    w = { "<cmd>w<cr><esc>", "Write to file" },
 
     -- NeoTree
     e = { "<cmd>NeoTreeFocusToggle<CR>", "Toggle Explorer" },
@@ -114,6 +122,19 @@ wk.register({
         R = { "<cmd>FlutterReload<CR>", "Flutter Reload" },
         d = { "<cmd>FlutterDevices<CR>", "Flutter Devices" },
     },
+
+    -- LSP
+    l = {
+        d = { "<cmd>Telescope lsp_definitions<cr>", "Goto Definition" },
+        D = { vim.lsp.buf.declaration, "Goto Declaration" },
+        I = { "<cmd>Telescope lsp_implementations<cr>", "Goto Implementation" },
+        y = { "<cmd>Telescope lsp_type_definitions<cr>", "Goto T[y]pe Definition" },
+        K = { vim.lsp.buf.signature_help, "Signature Help" },
+        a = { vim.lsp.buf.code_action, "Code Action" },
+        r = { vim.lsp.buf.rename, "Rename" },
+    }
+
+    -- c = { "<cmd>bprevious<cr><cmd>bd #<cr>", "Close buffer"},
 
 }, { prefix = "<leader>" })
 

@@ -31,6 +31,7 @@ lspSettings.lua_ls = {
 lspFiletypes.cssls = {"css", "scss", "less"}
 
 local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
+print(language_servers)
 for _, ls in ipairs(language_servers) do
     require('lspconfig')[ls].setup({
         capabilities = capabilities,

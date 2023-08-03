@@ -17,5 +17,8 @@ return {
         config = function ()
             require("plugins.configs.session")
         end
+    },
+    {
+        "ggandor/leap.nvim",
     }
 }
