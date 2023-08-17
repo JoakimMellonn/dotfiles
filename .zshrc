@@ -10,6 +10,12 @@ alias ls="colorls --dark --sd"
 alias nvim="env TERM=wezterm nvim"
 alias c="clear"
 alias ch="cd ~ && clear"
+alias msf="cd ~/Github/Mellonn-Speak/mellonnSpeak/"
+alias msw="cd ~/Github/Mellonn-Speak-Web/mellonnSpeakWeb/"
+alias mw="cd ~/Github/gatsby-website/mellonn-website/"
+alias msfn="cd ~/Github/Mellonn-Speak/mellonnSpeak/ && nvim"
+alias mswn="cd ~/Github/Mellonn-Speak-Web/mellonnSpeakWeb/ && nvim"
+alias mwn="cd ~/Github/gatsby-website/mellonn-website/ && nvim"
 
 export EDITOR=nvim
 

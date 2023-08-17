@@ -7,7 +7,13 @@ return {
       "stevearc/dressing.nvim",
     },
     config = function()
-      require("flutter-tools").setup({})
+      require("flutter-tools").setup({
+        lsp = {
+          settings = {
+            lineLength = 150,
+          },
+        },
+      })
     end,
   },
 }
