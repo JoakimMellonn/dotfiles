@@ -1,7 +1,6 @@
 # dotfiles
-Configs for different stuff
 
-# Install configs
+## Install configs
 
 Clone repo to ~/.config
 ```zsh
