@@ -16,13 +16,21 @@ alias mw="cd ~/Github/gatsby-website/mellonn-website/"
 alias msfn="cd ~/Github/Mellonn-Speak/mellonnSpeak/ && nvim"
 alias mswn="cd ~/Github/Mellonn-Speak-Web/mellonnSpeakWeb/ && nvim"
 alias mwn="cd ~/Github/gatsby-website/mellonn-website/ && nvim"
+alias hub="cd ~/Github/ && ls"
+alias lab="cd ~/Gitlab/ && ls"
+alias lg="lazygit"
+alias config="cd ~/.config/"
+alias zshrc="nvim ~/.config/.zshrc"
+alias reload="source ~/.config/.zshrc"
+alias brian="cd ~/Obsidian/Joakim\'s\ Second\ Brain/ && nvim"
+alias rss="cd ~/Github/rust-searcher/ && nvim"
 
 export EDITOR=nvim
 
 export PATH="$PATH:/Users/joakimrosenfeldtpedersen/flutter/bin"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 export PATH="$HOME/.tmuxifier/bin:$PATH"
-export PATH="/usr/local/opt/libressl/bin:$PATH"
+export PATH="/opt/homebrew/opt/libressl/bin:$PATH"
 
 eval "$(tmuxifier init -)"
 
