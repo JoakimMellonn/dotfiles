@@ -112,8 +112,8 @@ ZSH_HIGHLIGHT_STYLES[arg0]='fg=#F8F8F2'
 ZSH_HIGHLIGHT_STYLES[default]='fg=#F8F8F2'
 ZSH_HIGHLIGHT_STYLES[cursor]='standout'
 
-source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
+source ~/.config/tools/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-source /Users/joakimrosenfeldtpedersen/.scripts/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.config/tools/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
