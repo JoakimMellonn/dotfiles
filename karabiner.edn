@@ -1,0 +1,8 @@
+{:main [{:des "extended layer with right command",
+  :rules [
+    [:!Qh :left_arrow]
+    [:!Qj :down_arrow]
+    [:!Qk :up_arrow]
+    [:!Ql :right_arrow]
+  ]}]
+ }
