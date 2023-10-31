@@ -24,6 +24,7 @@ alias zshrc="nvim ~/.config/.zshrc"
 alias reload="source ~/.config/.zshrc"
 alias brian="cd ~/Obsidian/Joakim\'s\ Second\ Brain/ && nvim"
 alias rss="cd ~/Github/rust-searcher/ && nvim"
+alias serve="python3 -m http.server"
 
 export EDITOR=nvim
 

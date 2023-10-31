@@ -6,3 +6,5 @@
 [user]
 	email = joakim@mellonn.com
 	name = Joakim Rosenfeldt Pedersen
+[pull]
+	rebase = true
