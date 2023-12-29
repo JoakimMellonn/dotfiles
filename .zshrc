@@ -27,7 +27,6 @@ alias brian="cd ~/Obsidian/Joakim\'s\ Second\ Brain/ && nvim"
 alias rss="cd ~/Github/rust-searcher/ && nvim"
 alias serve="python3 -m http.server"
 alias x86="arch -x86_64 zsh"
-alias swea="open ~/OneDrive/Universitet\ Ting/E23/SWEA/"
 
 export EDITOR=nvim
 
