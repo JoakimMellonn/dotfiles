@@ -1,5 +1,5 @@
 return {
-  { "maxmx03/dracula.nvim" },
+  { "dracula/vim", name = "dracula" },
   {
     "LazyVim/LazyVim",
     opts = {
@@ -32,5 +32,8 @@ I use Neovim btw
 
       dashboard.section.header.val = vim.split(logo, "\n")
     end,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
   },
 }

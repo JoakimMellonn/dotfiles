@@ -11,7 +11,7 @@ alias nvim="env TERM=wezterm nvim"
 alias c="clear"
 alias ch="cd ~ && clear"
 alias msf="cd ~/Github/Mellonn-Speak/mellonnSpeak/"
-alias msw="cd ~/Github/speak-web/mellonnSpeakWeb/"
+alias msw="cd ~/Github/speak-web/"
 alias msa="cd ~/Github/Mellonn-Speak-Web/mellonnSpeakWeb/"
 alias mw="cd ~/Github/gatsby-website/mellonn-website/"
 alias msfn="cd ~/Github/Mellonn-Speak/mellonnSpeak/ && nvim"
@@ -27,6 +27,7 @@ alias brian="cd ~/Obsidian/Joakim\'s\ Second\ Brain/ && nvim"
 alias rss="cd ~/Github/rust-searcher/ && nvim"
 alias serve="python3 -m http.server"
 alias x86="arch -x86_64 zsh"
+alias vim="nvim"
 
 export EDITOR=nvim
 
