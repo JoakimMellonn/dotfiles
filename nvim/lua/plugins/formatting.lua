@@ -12,16 +12,10 @@ return {
     nls.builtins.formatting.biome.with({
       extra_args = { "--tab-width", "4" },
     })
-    nls.builtins.formatting.cmakelang.with({
-      extra_args = { "--tab-width", "4" },
-    })
     nls.builtins.formatting.gofumpt.with({
       extra_args = { "--tab-width", "4" },
     })
     nls.builtins.formatting.goimports.with({
-      extra_args = { "--tab-width", "4" },
-    })
-    nls.builtins.formatting.gomodifytags.with({
       extra_args = { "--tab-width", "4" },
     })
     nls.builtins.formatting.markdownlint.with({
