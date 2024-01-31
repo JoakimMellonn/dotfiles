@@ -16,6 +16,8 @@ op/*
 lazygit/*
 github-copilot/*
 planetscale/*
+gh/*
+graphite/*
 
 # Stuff
 .DS_Store
