@@ -23,3 +23,5 @@ map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
 map("x", "<leader>p", [["_dP]])
+
+map("n", "<leader>ce", "oif err != nil {<CR>}<Esc>Oreturn err<Esc>")
