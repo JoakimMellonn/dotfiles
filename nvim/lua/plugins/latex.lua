@@ -1,3 +1,4 @@
 return {
-  "lervag/vimtex",
+  { "lervag/vimtex" },
+  { "xuhdev/vim-latex-live-preview" },
 }

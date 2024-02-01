@@ -7,3 +7,7 @@ local opt = vim.opt
 opt.scrolloff = 8
 opt.shiftwidth = 4
 opt.tabstop = 4
+
+-- vim.g stuff
+local g = vim.g
+g.livepreview_previewer = "open -a Skim"
