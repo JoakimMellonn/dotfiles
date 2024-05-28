@@ -18,6 +18,8 @@ github-copilot/*
 planetscale/*
 gh/*
 graphite/*
+neofetch/*
+htop/*
 
 # Stuff
 .DS_Store
