@@ -20,9 +20,10 @@ alias mwn="cd ~/Github/gatsby-website/mellonn-website/ && nvim"
 alias hub="cd ~/Github/ && ls"
 alias lab="cd ~/Gitlab/ && ls"
 alias lg="lazygit"
+alias ldo="lazydocker"
 alias config="cd ~/.config/"
-alias zshrc="nvim ~/.config/.zshrc"
-alias reload="source ~/.config/.zshrc"
+alias zshrc="vim ~/.zshrc"
+alias reload="source ~/.zshrc"
 alias brian="cd ~/Obsidian/Joakim\'s\ Second\ Brain/ && nvim"
 alias rss="cd ~/Github/rust-searcher/ && nvim"
 alias serve="python3 -m http.server"
@@ -30,7 +31,10 @@ alias x86="arch -x86_64 zsh"
 alias vim="nvim"
 alias qemupi="qemu-system-aarch64 -m 1G -smp 4 -M raspi3b -cpu cortex-a72 -kernel ~/qemu/rasbp/kernel8.img -dtb ~/qemu/rasbp/bcm2710-rpi-3-b-plus.dtb -sd ~/qemu/rasbp/raspbian-buster.img -nographic -append 'rw earlyprintk loglevel=8 console=ttyAMA0,115200 dwc_otg.lpm_enable=0 root=/dev/mmcblk0p2 rootwait rootfstype=ext4' -usb -device usb-mouse -device usb-kbd -device usb-net,netdev=net0 -netdev user,id=net0,hostfwd=tcp::5555-:22"
 alias sshpi="ssh -p 5555 pi@localhost"
+alias sshexsys="ssh -i ~/.ssh/IT-gruppe-jagt root@167.172.168.36"
 alias sb="cd ~/sandbox/ && ls"
+
+eval "$(zoxide init --cmd cd zsh)"
 
 export EDITOR=nvim
 
