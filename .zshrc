@@ -7,6 +7,7 @@ fi
 
 precmd() { print "" }
 alias ls="colorls --dark --sd"
+alias ll="colorls --dark --sd -l"
 alias nvim="env TERM=wezterm nvim"
 alias c="clear"
 alias ch="cd ~ && clear"
