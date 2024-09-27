@@ -123,14 +123,14 @@ alias nxst='ssh adm-joped@dc1-nexs003.systematicgroup.local'
 alias sq='ssh adm-joped@sonarqube.systematicgroup.local'
 # alias sup='ssh adm-joped@support.systematic.com'
 
+alias sup='ssh -i ~/.ssh/jira jira@dc1-jira004.sgdmz.local'
 alias tsup='ssh adm-joped@tsupport.systematic.com'
-alias jp='ssh adm-joped@jira-prod.systematicgroup.local'
-alias tjp='ssh adm-joped@tjira-prod.systematicgroup.local'
+alias jp='ssh -i ~/.ssh/jira jira@jira-prod.systematicgroup.local'
+alias tjp='ssh -i ~/.ssh/jira jira@tjira-prod.systematicgroup.local'
 alias tf='terraform'
 alias tsq='ssh adm-joped@tsonarqube.systematicgroup.local'
 alias twiki='ssh adm-joped@twiki.systematicgroup.local'
 alias wiki='ssh adm-joped@wiki.systematicgroup.local'
-alias sup='ssh -i ~/.ssh/jira jira@dc1-jira004.sgdmz.local'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
