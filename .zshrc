@@ -39,8 +39,10 @@ alias qemupi="qemu-system-aarch64 -m 1G -smp 4 -M raspi3b -cpu cortex-a72 -kerne
 alias sshpi="ssh -p 5555 pi@localhost"
 alias sshexsys="ssh -i ~/.ssh/IT-gruppe-jagt root@167.172.168.36"
 alias sb="cd ~/sandbox/ && ls"
+alias dall="dotenv allow"
 
 eval "$(zoxide init --cmd cd zsh)"
+eval "$(direnv hook zsh)"
 
 export EDITOR=nvim
 
