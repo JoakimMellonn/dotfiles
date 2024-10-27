@@ -12,7 +12,6 @@ program = "/bin/zsh"
 
 [window]
 startup_mode = "Windowed"
-decorations = "none"
 
 [window.dimensions]
 columns = 145
