@@ -12,6 +12,7 @@ program = "/bin/zsh"
 
 [window]
 startup_mode = "Windowed"
+option_as_alt = "Both"
 
 [window.dimensions]
 columns = 145
