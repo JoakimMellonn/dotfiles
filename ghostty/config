@@ -1,0 +1,10 @@
+theme = dracula
+background = "#282A36"
+font-family = "FiraCode Nerd Font Mono"
+font-feature = "-calt"
+font-feature = "-liga"
+font-feature = "-dlig"
+
+macos-option-as-alt = right
+
+command = "/bin/zsh -l -c tmux attach || tmux"
