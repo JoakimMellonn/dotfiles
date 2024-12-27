@@ -10,6 +10,10 @@ bindkey '^R' history-incremental-search-backward
 # Added ctrl+p for good measure, since that was also broken
 bindkey '^P' up-history
 
+# Misc opts
+setopt histignoredups
+
+# Alias'
 precmd() { print "" }
 alias ls="colorls --dark --sd"
 alias ll="colorls --dark --sd -l"
