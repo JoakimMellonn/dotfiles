@@ -12,3 +12,11 @@ opt.wrap = true
 -- vim.g stuff
 local g = vim.g
 g.livepreview_previewer = "open -a Skim"
+
+-- autocmds that is needed at startup
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "*",
+  callback = function()
+    vim.cmd("highlight! Normal ctermbg=NONE guibg=NONE")
+  end,
+})
