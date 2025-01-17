@@ -83,6 +83,9 @@ if [ -x /usr/bin/dircolors ]; then
 	alias egrep='egrep --color=auto'
 fi
 
+# PATHs
+export PATH=$PATH:/usr/local/go/bin
+
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
@@ -100,6 +103,7 @@ alias gpp='git push'
 alias ggp='git pull'
 alias giff='git diff'
 alias python="python3"
+alias air='$(go env GOPATH)/bin/air'
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -131,6 +135,7 @@ alias tf='terraform'
 alias tsq='ssh adm-joped@tsonarqube.systematicgroup.local'
 alias twiki='ssh adm-joped@twiki.systematicgroup.local'
 alias wiki='ssh adm-joped@wiki.systematicgroup.local'
+alias dtss='ssh adm-joped@dc1-dtss001'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -178,3 +183,15 @@ fi
 eval "$(zoxide init bash --cmd cd)"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+function rgfzf {
+	command rg --color=always --line-number --no-heading --smart-case "${*:-}" |
+		command fzf -d':' --ansi \
+			--preview "command bat -p --color=always {1} --highlight-line {2}" \
+			--preview-window ~8,+{2}-5 |
+		awk -F':' '{print $1}'
+}
+
+function ffvim {
+	command nvim $(rgfzf)
+}
