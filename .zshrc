@@ -5,6 +5,15 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Fix to ctrl+r in tmux
+bindkey '^R' history-incremental-search-backward
+# Added ctrl+p for good measure, since that was also broken
+bindkey '^P' up-history
+
+# Misc opts
+setopt histignoredups
+
+# Alias'
 precmd() { print "" }
 alias ls="colorls --dark --sd"
 alias ll="colorls --dark --sd -l"
@@ -34,8 +43,10 @@ alias qemupi="qemu-system-aarch64 -m 1G -smp 4 -M raspi3b -cpu cortex-a72 -kerne
 alias sshpi="ssh -p 5555 pi@localhost"
 alias sshexsys="ssh -i ~/.ssh/IT-gruppe-jagt root@167.172.168.36"
 alias sb="cd ~/sandbox/ && ls"
+alias dall="dotenv allow"
 
 eval "$(zoxide init --cmd cd zsh)"
+eval "$(direnv hook zsh)"
 
 export EDITOR=nvim
 
@@ -58,6 +69,19 @@ fi
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
+# CTRL-/ to toggle small preview window to see the full command
+# CTRL-Y to copy the command into clipboard using pbcopy
+export FZF_CTRL_R_OPTS="
+  --preview 'echo {}' --preview-window up:3:hidden:wrap
+  --bind 'ctrl-/:toggle-preview'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
+
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main cursor)
 typeset -gA ZSH_HIGHLIGHT_STYLES
@@ -129,3 +153,8 @@ source ~/.config/tools/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 source ~/.config/tools/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
