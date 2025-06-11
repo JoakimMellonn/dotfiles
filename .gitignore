@@ -20,6 +20,9 @@ gh/*
 graphite/*
 neofetch/*
 htop/*
+hcloud/*
+posthog-cli/*
+fish/*
 
 # Stuff
 .DS_Store
