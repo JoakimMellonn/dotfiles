@@ -34,7 +34,7 @@ alias ldo="lazydocker"
 alias config="cd ~/.config/"
 alias zshrc="vim ~/.zshrc"
 alias reload="source ~/.zshrc"
-alias brian="cd ~/Obsidian/Joakim\'s\ Second\ Brain/ && nvim"
+alias brain="cd ~/Obsidian/Joakim\'s\ Second\ Brain/ && nvim"
 alias rss="cd ~/Github/rust-searcher/ && nvim"
 alias serve="python3 -m http.server"
 alias x86="arch -x86_64 zsh"
@@ -44,6 +44,11 @@ alias sshpi="ssh -p 5555 pi@localhost"
 alias sshexsys="ssh -i ~/.ssh/IT-gruppe-jagt root@167.172.168.36"
 alias sb="cd ~/sandbox/ && ls"
 alias dall="dotenv allow"
+alias hetz="ssh -i ~/.ssh/hetzner root@65.21.108.63"
+alias hstart="hcloud server poweron 59577256"
+alias hstop="hcloud server poweroff 59577256"
+alias rasppi="ssh -i ~/.ssh/rasppi joakim@192.168.1.87"
+alias grep="rg"
 
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(direnv hook zsh)"
@@ -75,6 +80,10 @@ source <(fzf --zsh)
 
 # CTRL-/ to toggle small preview window to see the full command
 # CTRL-Y to copy the command into clipboard using pbcopy
+export FZF_DEFAULT_COMMAND="fd --type file --color=always"
+export FZF_DEFAULT_OPTS="--ansi"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 export FZF_CTRL_R_OPTS="
   --preview 'echo {}' --preview-window up:3:hidden:wrap
   --bind 'ctrl-/:toggle-preview'
@@ -158,3 +167,24 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/joakimrosenfeldtpedersen/.lmstudio/bin"
+
+. "$HOME/.posthog/env"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/joakimrosenfeldtpedersen/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/joakimrosenfeldtpedersen/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/joakimrosenfeldtpedersen/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/joakimrosenfeldtpedersen/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
