@@ -23,6 +23,7 @@ htop/*
 hcloud/*
 posthog-cli/*
 fish/*
+gcloud/*
 
 # Stuff
 .DS_Store
