@@ -168,7 +168,7 @@ fi
 . "$HOME/.cargo/env"
 
 # java stuff
-JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
 export JAVA_HOME
 export JRE_HOME
 export PATH=$PATH:$JAVA_HOME/bin
