@@ -104,13 +104,14 @@ alias ggp='git pull'
 alias giff='git diff'
 alias python="python3"
 alias air='$(go env GOPATH)/bin/air'
+alias pools='code ~/repo/ntnx-automation/pools/'
+alias fd="fdfind"
 
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-alias vi='vim'
 alias rs='. ~/.bashrc'
 alias rc='vim ~/.bashrc'
 alias ansi='ssh adm-joped@dc1-ansi002.systematicgroup.local'
@@ -127,7 +128,7 @@ alias nxst='ssh adm-joped@dc1-nexs003.systematicgroup.local'
 alias sq='ssh adm-joped@sonarqube.systematicgroup.local'
 # alias sup='ssh adm-joped@support.systematic.com'
 
-alias sup='ssh -i ~/.ssh/jira jira@dc1-jira004.sgdmz.local'
+alias sup='ssh -i ~/.ssh/jira jira@dc1-jira011.sgdmz.local'
 alias tsup='ssh adm-joped@tsupport.systematic.com'
 alias jp='ssh -i ~/.ssh/jira jira@jira-prod.systematicgroup.local'
 alias tjp='ssh -i ~/.ssh/jira jira@tjira-prod.systematicgroup.local'
@@ -136,6 +137,10 @@ alias tsq='ssh adm-joped@tsonarqube.systematicgroup.local'
 alias twiki='ssh adm-joped@twiki.systematicgroup.local'
 alias wiki='ssh adm-joped@wiki.systematicgroup.local'
 alias dtss='ssh adm-joped@dc1-dtss001'
+alias win-dtss='ssh -i ~/.ssh/dc2-dtss002 adm-joped@dc2-dtss002'
+
+# private
+alias hetz="ssh -i ~/.ssh/hetzner root@46.62.150.91"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -183,6 +188,9 @@ fi
 eval "$(zoxide init bash --cmd cd)"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export FZF_DEFAULT_COMMAND='fd --type file --color=always --follow --hidden --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 function rgfzf {
 	command rg --color=always --line-number --no-heading --smart-case "${*:-}" |
