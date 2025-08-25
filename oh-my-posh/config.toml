@@ -1,0 +1,148 @@
+console_title_template = '{{ .Shell }} in {{ .Folder }}'
+version = 3
+final_space = true
+
+[palette]
+black = '#282a36'
+white = '#f8f8f2'
+grey = '#BBB'
+blue = '#8be9fd'
+green = '#50fa7b'
+orange = '#ffb86c'
+red = '#ff5555'
+pink = '#ff79c6'
+purple = '#bd93f9'
+yellow = '#f1fa8c'
+
+[secondary_prompt]
+template = '<p:pink,transparent></><,p:pink> {{ .Folder }} </><p:pink,transparent></> '
+foreground = 'p:black'
+background = 'transparent'
+
+[transient_prompt]
+template = '<p:pink,transparent></><,p:pink> {{ .Folder }} </><p:pink,transparent></> '
+foreground = 'p:black'
+background = 'transparent'
+
+[upgrade]
+notice = true
+interval = "168h"
+auto = false
+source = "cdn"
+
+[[blocks]]
+type = 'prompt'
+alignment = 'left'
+
+[[blocks.segments]]
+type = 'text'
+style = "plain"
+template = "╭─"
+foreground = "p:grey"
+
+[[blocks.segments]]
+type = "os"
+style = "powerline"
+powerline_symbol = ""
+foreground = "p:black"
+background = "p:grey"
+[blocks.segments.properties]
+macos = ""
+
+[[blocks.segments]]
+type = "path"
+style = "powerline"
+powerline_symbol = ""
+foreground = "p:white"
+background = "p:purple"
+
+[blocks.segments.properties]
+style = "agnoster_full"
+home_icon = "~"
+right_format = "<b>%s</b>"
+max_depth = 2
+
+# [blocks.segments.properties.mapped_locations]
+# "~/.config" = ""
+# "~/Github" = ""
+# "~/Gitlab" = ""
+
+[[blocks.segments]]
+type = "git"
+style = "powerline"
+powerline_symbol = ""
+foreground = "p:black"
+background = "p:green"
+
+[blocks.segments.properties]
+display_status = true
+display_stash_count = true
+display_upstream_icon = true
+branch_icon = " "
+github_icon = " "
+status_formats = { working = "*{{ . }}" }
+
+[[blocks]]
+type = 'rprompt'
+
+[[blocks.segments]]
+template = ' '
+foreground = 'p:green'
+background = 'transparent'
+type = 'node'
+style = 'plain'
+
+[blocks.segments.properties]
+display_mode = 'files'
+fetch_package_manager = false
+home_enabled = false
+
+[[blocks.segments]]
+template = ' '
+foreground = 'p:blue'
+background = 'transparent'
+type = 'go'
+style = 'plain'
+
+[blocks.segments.properties]
+fetch_version = false
+
+[[blocks.segments]]
+template = ' '
+foreground = 'p:yellow'
+background = 'transparent'
+type = 'python'
+style = 'plain'
+
+[blocks.segments.properties]
+display_mode = 'files'
+fetch_version = false
+fetch_virtual_env = false
+
+[[blocks.segments]]
+type = "executiontime"
+style = "powerline"
+powerline_symbol = ""
+foreground = "p:black"
+background = "p:green"
+template = "  {{ .FormattedMs }} "
+
+[blocks.segments.properties]
+threshold = 500
+style = "austin"
+always_enabled = true
+
+[[blocks]]
+type = 'prompt'
+alignment = 'left'
+newline = true
+
+[[blocks.segments]]
+template = '╰─'
+foreground = 'p:grey'
+type = 'status'
+style = 'plain'
+foreground_templates = ['{{ if gt .Code 0 }}#ff0000{{ end }}']
+
+[blocks.segments.properties]
+always_enabled = true
