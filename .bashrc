@@ -186,6 +186,8 @@ if [ -d "$FNM_PATH" ]; then
 fi
 
 eval "$(zoxide init bash --cmd cd)"
+alias bat="batcat"
+alias cat="bat"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
