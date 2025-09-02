@@ -26,3 +26,14 @@ fish/*
 
 # Stuff
 .DS_Store
+
+# work
+go/
+github-copilot/
+docker/
+lazydocker/
+lazygit/
+NuGet/
+configstore/
+jsrepo-nodejs/
+*kdl.bak*
