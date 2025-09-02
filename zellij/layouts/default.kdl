@@ -25,7 +25,7 @@ layout {
       plugin location="status-bar"
     }
   }
-  tab name="default" cwd="~/.config" {
+  tab name="config" cwd="~/.config" {
     pane
   }
   tab name="sandbox" cwd="~/sandbox" split_direction="vertical" {
