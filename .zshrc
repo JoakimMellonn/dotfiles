@@ -43,6 +43,10 @@ alias hstop="hcloud server poweroff 59577256"
 alias rasppi="ssh -i ~/.ssh/rasppi joakim@192.168.1.87"
 alias grep="rg"
 
+function fcd {
+    cd $(fd --type d --hidden --glob '.git' ~/Github ~/Gitlab ~/.config ~/sandbox -x dirname | sort -u | fzf)
+}
+
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(direnv hook zsh)"
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then

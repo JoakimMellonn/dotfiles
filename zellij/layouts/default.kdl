@@ -1,19 +1,39 @@
 layout {
+  default_tab_template {
     pane size=1 borderless=true {
-        plugin location="https://github.com/h1romas4/zellij-datetime/releases/latest/download/zellij-datetime.wasm" {
-            timezone1 "GMT/+2"
-            default_timezone "UTC"
-            date_format "%d/%m/%Y/ %A"
-            background_color "#50fa7b"
-            foreground_color "#282a36"
-            pane_color "#282a36"
-        }
+      plugin location="tab-bar"
+    }
+    children
+    pane size=1 borderless=true {
+      plugin location="status-bar"
+    }
+  }
+  new_tab_template cwd="~" {
+    pane size=1 borderless=true {
+      plugin location="tab-bar"
+    }
+    pane {
+        children
     }
     pane size=1 borderless=true {
-        plugin location="zellij:tab-bar"
+      plugin location="status-bar"
     }
+  }
+  tab name="config" cwd="~/.config" {
     pane
-    pane size=2 borderless=true {
-        plugin location="zellij:status-bar"
+  }
+  tab name="sandbox" cwd="~/sandbox" split_direction="vertical" {
+    pane size="65%"
+    pane
+  }
+  swap_floating_layout {
+    floating_panes max_panes=1 {
+      pane {
+        x "15%"
+        y "10%"
+        width "70%"
+        height "80%"
+      }
     }
+  }
 }

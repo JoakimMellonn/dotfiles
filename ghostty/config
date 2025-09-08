@@ -10,4 +10,8 @@ macos-icon = "custom-style"
 macos-icon-screen-color = "#BD93F9"
 macos-icon-ghost-color = "#FF79C6"
 
-command = "/bin/zsh -l -c tmux attach || tmux"
+quit-after-last-window-closed = true
+confirm-close-surface = false
+
+# command = "/bin/zsh -l -c tmux attach || tmux"
+command = "/bin/zsh -l -c zellij"
