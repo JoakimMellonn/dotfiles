@@ -209,3 +209,5 @@ function ffvim {
 # opencode
 export PATH=/home/joped/.opencode/bin:$PATH
 export COLORTERM=truecolor
+
+[[ -s "/home/joped/.gvm/scripts/gvm" ]] && source "/home/joped/.gvm/scripts/gvm"

@@ -12,14 +12,8 @@ layout {
     pane size=1 borderless=true {
       plugin location="tab-bar"
     }
-    pane split_direction="vertical" {
-      pane size="65%" {
-        children
-      }
-      pane split_direction="horizontal" {
-        pane
-        pane
-      }
+    pane {
+      children
     }
     pane size=1 borderless=true {
       plugin location="status-bar"
@@ -30,6 +24,9 @@ layout {
   }
   tab name="sandbox" cwd="~/sandbox" split_direction="vertical" {
     pane size="65%"
+    pane
+  }
+  tab name="misc" cwd="~" {
     pane
   }
   swap_floating_layout {
